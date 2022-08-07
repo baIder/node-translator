@@ -7,9 +7,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "commander": "^9.4.0"
+    "commander": "^9.4.0",
+    "md5": "^2.3.0"
   },
   "devDependencies": {
+    "@types/md5": "^2.3.2",
     "@types/node": "^18.6.4"
   }
 }
