@@ -1,5 +1,5 @@
 {
-  "name": "node-translator",
+  "name": "bald3r-node-cli-translator",
   "version": "0.0.1",
   "main": "index.js",
   "bin": {
