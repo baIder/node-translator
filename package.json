@@ -5,9 +5,9 @@
   "bin": {
     "fy": "src/cli.ts"
   },
-  "scripts": {
-    "start": "tsnd src/main.ts"
-  },
+  "files": [
+    "dist/**/*.js"
+  ],
   "license": "MIT",
   "dependencies": {
     "commander": "^9.4.0",
