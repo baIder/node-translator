@@ -2,6 +2,9 @@
   "name": "node-translator",
   "version": "0.0.1",
   "main": "index.js",
+  "bin": {
+    "fy": "src/cli.ts"
+  },
   "scripts": {
     "start": "tsnd src/main.ts"
   },
