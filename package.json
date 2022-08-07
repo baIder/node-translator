@@ -1,9 +1,9 @@
 {
   "name": "bald3r-node-cli-translator",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "dist/main.js",
   "bin": {
-    "fy": "src/cli.ts"
+    "fy": "dist/cli.js"
   },
   "files": [
     "dist/**/*.js"
