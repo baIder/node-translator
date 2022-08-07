@@ -2,3 +2,4 @@
 /.idea/
 yarn-error.log
 yarn.lock
+/src/private.ts

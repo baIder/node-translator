@@ -1,13 +1,10 @@
 import * as https from 'https';
 import md5 = require('md5');
+import {appid, appSecret} from './private';
 
 export const translate = (word: string) => {
-  console.log(word);
-  const appid = '???';
-  const appSecret = '???';
   const salt = Math.random().toString();
   const sign = md5(appid + word + salt + appSecret);
-
 
   const params = new URLSearchParams({
     q: word,
@@ -19,7 +16,6 @@ export const translate = (word: string) => {
   });
 
   const query = params.toString();
-  console.log(query);
 
   const options = {
     hostname: 'api.fanyi.baidu.com',
@@ -28,16 +24,32 @@ export const translate = (word: string) => {
     method: 'GET'
   };
 
-  const req = https.request(options, (res) => {
-    res.on('data', (d) => {
-      process.stdout.write(d);
+  const request = https.request(options, (response) => {
+    let chunks: Buffer[] = [];
+    response.on('data', (chunk) => {
+      chunks.push(chunk);
+    });
+    response.on('end', () => {
+      const string = Buffer.concat(chunks).toString();
+      type BaiduResult = {
+        from: string,
+        to: string,
+        trans_result: {
+          src: string,
+          dst: string,
+        }[],
+        error_code?: string,
+        error_msg?: string,
+      }
+      const object: BaiduResult = JSON.parse(string);
+      console.log(object.trans_result[0].dst);
     });
   });
 
-  req.on('error', (e) => {
+  request.on('error', (e) => {
     console.error(e);
   });
-  req.end();
+  request.end();
 
 };
 
